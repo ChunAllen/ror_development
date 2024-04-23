@@ -1,0 +1,22 @@
+.row 
+  .col
+    h2 Authors
+  .col
+    .float-end
+      = link_to "New Author", new_author_path, class: 'btn btn-small btn-primary'
+
+.row 
+  .col
+    table.table.table-bordered.mt-3
+      thead
+        tr 
+          th Name 
+          th Number of books 
+          th Actions
+      tbody 
+        - @authors.each do |author|
+          tr 
+            td = author.name
+            td = author.books.count
+            td 
+              = link_to "Edit", edit_author_path(author.id)
