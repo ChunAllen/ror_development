@@ -1,13 +1,4 @@
 .row 
-  .col 
-    .card
-      .card-header
-        h4 Edit Author
-      ul.list-group.list-group-flush
-        li.list-group-item
-          = simple_form_for @author, method: :put do |f|
-            .mb-3
-              = f.input :name
-
-            .mb-3
-              = f.submit 'Submit', class: "btn btn-primary float-end"
+  .col
+    = simple_form_for @author, method: :put do |f|
+      = render "form", f: f

@@ -8,7 +8,6 @@ class AuthorsController < ApplicationController
 
   def new
     @author = Author.new
-    @author.books.build
   end
 
   def create
@@ -44,8 +43,7 @@ class AuthorsController < ApplicationController
   private
 
   def permitted_params
-    params.require(:author).permit(:name, 
-      books_attributes: [:id, :title, :description, :_destroy])
+    params.require(:author).permit(:name)
   end
 
   def prepare_author

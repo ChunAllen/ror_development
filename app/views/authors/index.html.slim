@@ -16,7 +16,9 @@
       tbody 
         - @authors.each do |author|
           tr 
-            td = author.name
+            td = link_to author.name, author_books_path(author.id)
             td = author.books.count
             td 
-              = link_to "Edit", edit_author_path(author.id)
+              = link_to "Edit", edit_author_path(author.id), class: "mx-2"
+
+              = link_to "Delete", author_path(author.id), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?", "turbo-method": :delete }

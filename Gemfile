@@ -48,8 +48,6 @@ gem "slim-rails"
 gem "bootstrap", "~> 5.3.2"
 gem "sassc-rails"
 gem 'simple_form'
-gem 'jquery-rails'
-gem 'cocoon'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -72,3 +70,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "jsbundling-rails", "~> 1.3"

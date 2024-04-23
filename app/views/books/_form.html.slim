@@ -1,0 +1,10 @@
+.card
+  .card-header
+    h4 = params[:id].present? ? "Edit Book" : "New Book"
+  .card-body    
+    = f.input :title
+
+    = f.input :description
+
+  .card-footer
+    = f.submit "Save", class: "btn btn-primary float-end"
