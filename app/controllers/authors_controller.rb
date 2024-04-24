@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
 
-  before_action :prepare_author, only: [:show, :edit, :update, :destroy]
+  before_action :prepare_author, only: [:edit, :update, :destroy]
 
   def index
     @authors = Author.order(:name)
@@ -14,13 +14,12 @@ class AuthorsController < ApplicationController
     @author = Author.new(permitted_params)
 
     if @author.save
-      redirect_to authors_path
+      redirect_to authors_path, notice: "Author has been created"
     else
-      render :new
+      flash.now[:error] = @author.errors.full_messages.to_sentence
+      render :new, status: :unprocessable_entity
     end
   end
-
-  def show; end
 
   def edit; end
 
@@ -28,15 +27,16 @@ class AuthorsController < ApplicationController
     if @author.update(permitted_params)
       redirect_to authors_path
     else
-      render :edit
+      flash.now[:error] = @author.errors.full_messages.to_sentence
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     if @author.destroy
-      redirect_to authors_path
+      redirect_to authors_path, notice: "Author #{@author.name} has been deleted"
     else
-      flash.now[:error] = @author.errors.full_messages.to_sentence
+      redirect_to authors_path, alert: @author.errors.full_messages.to_sentence
     end
   end
 

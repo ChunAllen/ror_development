@@ -8,7 +8,9 @@ html
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    = javascript_include_tag "turbo", type: "module"
   body
     = render partial: "shared/navbar"
     .container.mt-5.mb-2
+      = render partial: "shared/flash", flash: flash
       = yield

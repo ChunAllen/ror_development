@@ -20,5 +20,4 @@
             td = author.books.count
             td 
               = link_to "Edit", edit_author_path(author.id), class: "mx-2"
-
-              = link_to "Delete", author_path(author.id), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?", "turbo-method": :delete }
+              = link_to "Delete", author_path(author.id), data: { turbo_confirm: "Are you sure you want to delete #{author.name}?", turbo_method: :delete }

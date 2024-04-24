@@ -1,0 +1,8 @@
+.row.justify-content-md-center
+  .col.col-md-8.col-lg-4
+    - if notice
+      .alert.alert-primary[role="alert"]
+        = notice.html_safe
+    - if alert
+      .alert.alert-danger[role="alert"]
+        = alert.html_safe

@@ -48,6 +48,7 @@ gem "slim-rails"
 gem "bootstrap", "~> 5.3.2"
 gem "sassc-rails"
 gem 'simple_form'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -63,12 +64,17 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'pry', '~> 0.14.2'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "rspec-rails", "~> 6.1.0"
+  gem "factory_bot_rails"
+  gem 'shoulda-matchers', '~> 6.0'
 end
 
 gem "jsbundling-rails", "~> 1.3"

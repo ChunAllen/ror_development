@@ -1,7 +1,10 @@
 class Author < ApplicationRecord
-  has_many :books, dependent: :destroy  
+  has_many :books, dependent: :restrict_with_error
 
-  accepts_nested_attributes_for :books, reject_if: :all_blank, allow_destroy: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 
-  validates :name, presence: true
+  # To Add DB uniquness constraint 
+  # create a migration file using rails g migration <migration_name>
+  # add_index :posts, :user_id, unique: true
+  # rake db:migrate
 end
